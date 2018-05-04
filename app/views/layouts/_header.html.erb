@@ -12,30 +12,26 @@
               <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <% if user_signed_in? %>
+                <li>
+                <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+                </li>
+              <% else %>
+                <li>
+                <%= link_to('Login', new_user_session_path)  %>  
+                </li>
+              <% end %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="post.html">Sample Post</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+              <a class="nav-link" href="contact.html">About</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!-- Page Header -->
-    <header class="masthead" style="background-image: url('home-bg.jpg')">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="site-heading">
-              <h1>Clean Blog</h1>
-              <span class="subheading">A Blog Theme by Start Bootstrap</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+    <style>
+      li>a{
+        color: rgba(0, 0, 0, 0.5) !important;
+      }
+    </style>
