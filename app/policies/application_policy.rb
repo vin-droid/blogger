@@ -7,7 +7,7 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    true
   end
 
   def show?
@@ -15,7 +15,15 @@ class ApplicationPolicy
   end
 
   def create?
-    false
+    true
+  end
+
+  def export?
+    true
+  end
+
+  def history?
+    true
   end
 
   def new?
@@ -23,7 +31,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    true
   end
 
   def dashboard?
@@ -35,7 +43,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    true
   end
 
   def scope

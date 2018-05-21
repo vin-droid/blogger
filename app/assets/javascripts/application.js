@@ -9,9 +9,13 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//= require jquery
+//= require jquery2
+//= require jquery_ujs
 //= require bootstrap
-//= require rails-ujs
 //= require turbolinks
 //= require clean-blog
+//= stub rails_admin/custom/ui.js
+//= stub rails_admin/custom/ra.widgets.coffee
+//= require froala_editor.min.js
+
 //= require_tree .
