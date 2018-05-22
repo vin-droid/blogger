@@ -31,22 +31,50 @@ RailsAdmin.config do |config|
   config.model 'Post' do 
     list do
       field :title
+      field :sub_title
       field :content
-      field :upvote
+      field :upvotes
     end
     show do
-      # e.g. include_all_fields
+      include_all_fields
     end
     edit do
       field :title do
         required true        
+      end      
+      field :sub_title do
+        required true        
       end
-      field :content,:froala do
+      field :content, :froala do
         required true, 
         config_options do
           {
             inlineMode: false,
-            paragraphy: false
+            paragraphy: false,
+            imageUploadURL: '/froala_upload',
+            imageUploadParam: 'file',
+            imageUploadParams: {
+              type: 'image',
+              model: 'content',
+            },
+            fileUploadURL: '/froala_upload',
+            fileUploadParam: 'file',
+            fileUploadParams: {
+              type: 'file',
+              model: 'content',
+            },
+            imageManagerLoadMethod: 'POST',
+            imageManagerLoadURL: '/froala_manage',
+            imageManagerLoadParams: {
+              model: 'content',
+              format: 'json',
+            },
+            imageManagerDeleteMethod: 'DELETE',
+            imageManagerDeleteURL: '/froala_delete',
+            imageManagerDeleteParams: {
+              model: 'content',
+              format: 'json',
+            },
           }
         end
       end
@@ -89,10 +117,9 @@ RailsAdmin.config do |config|
     show
     edit
     delete
-    show_in_app
 
     ## With an audit adapter, you can add:
-    history_index
-    history_show
+    # history_index
+    # history_show
   end
 end
